@@ -1,0 +1,19 @@
+androidjenkins:
+  image: ocasta/android-jenkins
+  volumes_from:
+    - androidjenkinsdata
+  links:
+    - androidjenkinsdata
+  ports:
+    - "8080:8080"
+  user: root
+
+androidjenkinsdata:
+  image: debian:jessie
+  volumes:
+    - /var/jenkins_home
+    - /opt/android-sdk-linux/add-ons
+    - /opt/android-sdk-linux/build-tools
+    - /opt/android-sdk-linux/extras
+    - /opt/android-sdk-linux/platform-tools
+    - /opt/android-sdk-linux/platforms
