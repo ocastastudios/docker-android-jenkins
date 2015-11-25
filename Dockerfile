@@ -13,14 +13,10 @@ RUN apt-get clean
 RUN cd /opt && curl -O http://dl.google.com/android/android-sdk_r24.4.1-linux.tgz
 RUN cd /opt && tar xzf android-sdk_r24.4.1-linux.tgz
 RUN cd /opt && rm -f android-sdk_r24.4.1-linux.tgz
-
-# Android SDK volumes so it doesn't get wiped on image updates
-VOLUME ["/opt/android-sdk-linux/add-ons", "/opt/android-sdk-linux/build-tools", "/opt/android-sdk-linux/extras", "/opt/android-sdk-linux/platform-tools", "/opt/android-sdk-linux/platforms"]
-
-RUN chown -R jenkins:jenkins /opt/android-sdk-linux
 RUN chmod -R +xr /opt/android-sdk-linux
 
-USER jenkins
+# Android SDK volumes so it doesn't get wiped on image updates
+VOLUME ["/opt/android-sdk-linux"]
 
 # Android SDK Paths
 ENV ANDROID_HOME /opt/android-sdk-linux

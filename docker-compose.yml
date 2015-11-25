@@ -6,14 +6,10 @@ androidjenkins:
     - androidjenkinsdata
   ports:
     - "8080:8080"
-  user: root
 
 androidjenkinsdata:
-  image: debian:jessie
+  image: ocasta/android-jenkins
+  command: "sleep 300"
   volumes:
     - /var/jenkins_home
-    - /opt/android-sdk-linux/add-ons
-    - /opt/android-sdk-linux/build-tools
-    - /opt/android-sdk-linux/extras
-    - /opt/android-sdk-linux/platform-tools
-    - /opt/android-sdk-linux/platforms
+    - /opt/android-sdk-linux
