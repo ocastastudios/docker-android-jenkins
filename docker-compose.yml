@@ -6,6 +6,8 @@ androidjenkins:
     - androidjenkinsdata
   ports:
     - "8080:8080"
+  devices:
+    - "/dev/bus/usb:/dev/bus/usb:rwm"
 
 androidjenkinsdata:
   image: ocasta/android-jenkins
